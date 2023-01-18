@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import axiosApiInstance from '../../services/axios-interceptor'
 import { getToken } from '../../services/token-service'
 // import { AsyncStorage } from '@react-native-async-storage/async-storage'
 import { API_BASE_URL } from '@env';
+import Game from '../game/game.js'
 
 
 
@@ -64,10 +65,8 @@ const Games = () => {
   return (
     <View style={styles.gamesContainer}>
         {games.map((game) => {
-          return <Text style={styles.text}>{game.home_team_result}</Text>
+          return <Game key={game.game_uuid} details={game} />
         })}
-        <Text style={styles.text}>Games</Text>
-      <StatusBar style="auto" />
 
     </View>
   );
@@ -75,13 +74,13 @@ const Games = () => {
 
 const styles = StyleSheet.create({
   gamesContainer: {
+    flex:1,
     backgroundColor: '#1d1c1c',
+    // backgroundColor: 'pink',
     textAlign: 'center',
-    height: 2000,
+    height: 10,
+    paddingTop: 30
     // backgroundColor: '#fff'
-  },
-text: {
-  color: '#ffffff'
-} });
+  } });
 
 export default Games
