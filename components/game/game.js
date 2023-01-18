@@ -93,13 +93,13 @@ const Game = ({ details }) => {
       </View>
       <View style={styles.gameDataContainer}>
 
-      <Image style={styles.teamLogo} source={getTeamLogo(details.home_team_code)} />
+      <Image style={details.home_team_code === 'HV71' ? styles.teamLogoHv : styles.teamLogo}  source={getTeamLogo(details.home_team_code)} />
 
       <Text style={styles.text}>{homeScore}</Text>
       <Text style={styles.text}>-</Text>
       <Text style={styles.text}>{awayScore}</Text>
 
-      <Image style={styles.teamLogo} source={getTeamLogo(details.away_team_code)} />
+      <Image style={details.away_team_code === 'HV71' ? styles.teamLogoHv : styles.teamLogo} source={getTeamLogo(details.away_team_code)} />
       </View>
 
       </View>
@@ -127,6 +127,10 @@ const Game = ({ details }) => {
     teamLogo: {
       height: 50,
       width: 50
+    },
+    teamLogoHv: {
+      height: 50,
+      width: 80,
     },
     dateTimeText: {
       textAlign: 'center',
