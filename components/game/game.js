@@ -83,6 +83,16 @@ const Game = ({ details }) => {
   }, [])
     return (
       <View style={styles.gameContainer}>
+
+      <View style={styles.dateContainer}>
+      <Text style={styles.dateTimeText}>{dayjs(details.start_date_time).format('dddd-D-MMMM').split('-').join(' ')}</Text>
+
+<Text style={styles.dateTimeText}>{new Date(details.start_date_time).getTime() < new Date(Date.now()).getTime() ? 'FINAL' : dayjs(details.start_date_time).format('HH-mm').split('-').join(':')}</Text>
+
+
+      </View>
+      <View style={styles.gameDataContainer}>
+
       <Image style={styles.teamLogo} source={getTeamLogo(details.home_team_code)} />
 
       <Text style={styles.text}>{homeScore}</Text>
@@ -90,6 +100,7 @@ const Game = ({ details }) => {
       <Text style={styles.text}>{awayScore}</Text>
 
       <Image style={styles.teamLogo} source={getTeamLogo(details.away_team_code)} />
+      </View>
 
       </View>
     )
@@ -97,21 +108,30 @@ const Game = ({ details }) => {
 
   const styles = StyleSheet.create({
     gameContainer: {
+      height: 150,
+    },
+    gameDataContainer: {
       flex: 1,
       flexDirection: 'row',
-      height: 1,
       justifyContent: 'space-evenly',
-      alignItems: 'center'
+      },
+    dateContainer: {
+
     },
     text: {
       textAlign: 'center',
       color: '#ffffff',
-      fontSize: 30
+      fontSize: 40
       
     },
     teamLogo: {
       height: 50,
       width: 50
+    },
+    dateTimeText: {
+      textAlign: 'center',
+      color: '#ffffff',
+      fontSize: 15
     }
   });
   
