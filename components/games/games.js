@@ -43,9 +43,7 @@ const Games = () => {
   
           setGames(response.data.games)  
           setLoading(false)
-        } catch (e) {
-          console.log('TEST')
-  
+        } catch (e) {  
           console.log(e)
           setLoading(false)
         }

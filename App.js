@@ -1,30 +1,51 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/header/header.js'
 import Main from './components/main/main.js'
+import Menu from './components/menu/menu.js'
 import Games from './components/games/games.js';
+import Standings from './components/standings/standings.js';
+
 import { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
+const navigationRef = React.createRef();
+
 
 
 
 export default function App() {
-  // useEffect(() => {
-  //   const test = async () => {
-  //     try {
-  //     const response = await fetch('http://192.168.0.25:9000/api/v1')
-  //     const json = await response.json();
-  //     return json
-  //     } catch (e) {
-  //       console.log('test' + e.code)    
-  //   }
-  //   }
-  //   console.log('HEJ' + test())
-  // }, [])
+  const options = {
+    headerShown: false, 
+    animation: 'fade_from_bottom' 
+  }
+
   return (
     <View style={styles.mainContainer}>
-      <Header style={styles.headerContainer} />
+    <Header style={styles.headerContainer} />
+    <NavigationContainer>
+            <Stack.Navigator>
+        <Stack.Screen
+          name="Games"
+          component={Games}
+          options={options}
+
+        />
+                <Stack.Screen
+          name="Standings"
+          component={Standings}
+          options={options}
+        />
       {/* <Main style={styles.mainContentContainer} /> */}
-      <Games />
+      {/* <Games /> */}
+
+    </Stack.Navigator>
+    <Menu />
+
+    </NavigationContainer>
 
       <StatusBar style="auto" />
     </View>

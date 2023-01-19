@@ -130,7 +130,7 @@ const Game = ({ details }) => {
     },
     teamLogoHv: {
       height: 50,
-      width: 80,
+      width: 75,
     },
     dateTimeText: {
       textAlign: 'center',

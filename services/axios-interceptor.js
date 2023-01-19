@@ -49,6 +49,7 @@ axiosApiInstance.interceptors.response.use(
       return axiosApiInstance(originalRequest)
     } 
     // If refresh failure, return error
+    console.log(error)
     return Promise.reject(error)
   }
 )
